@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { ExpenseContext } from "../context/Context";
 
 const Wrapper = styled.div`
   border: 0.5px solid lightgray;
@@ -43,29 +45,21 @@ const DeleteBtn = styled.button`
 `;
 
 const ExpenseList = () => {
+  const { list } = useContext(ExpenseContext);
+
   return (
     <Wrapper>
-      <ListItem>
-        <p>Shopping</p>
-        <PriceDelete>
-          <Price>&#163;{2000}</Price>
-          <DeleteBtn>x</DeleteBtn>
-        </PriceDelete>
-      </ListItem>
-      <ListItem>
-        <p>Shopping</p>
-        <PriceDelete>
-          <Price>&#163;{2000}</Price>
-          <DeleteBtn>x</DeleteBtn>
-        </PriceDelete>
-      </ListItem>
-      <ListItem>
-        <p>Shopping</p>
-        <PriceDelete>
-          <Price>&#163;{2000}</Price>
-          <DeleteBtn>x</DeleteBtn>
-        </PriceDelete>
-      </ListItem>
+      {list.map((item) => {
+        return (
+          <ListItem key={item.id}>
+            <p>{item.name}</p>
+            <PriceDelete>
+              <Price>&#163;{item.cost}</Price>
+              <DeleteBtn>x</DeleteBtn>
+            </PriceDelete>
+          </ListItem>
+        );
+      })}
     </Wrapper>
   );
 };

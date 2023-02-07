@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ExpenseProvider from "./context/Context";
 import ExpenseContainer from "./expenses/ExpenseContainer";
 import Header from "./header/Header";
 
@@ -10,10 +11,12 @@ const Wrapper = styled.div`
 
 function App() {
   return (
-    <Wrapper>
-      <Header />
-      <ExpenseContainer />
-    </Wrapper>
+    <ExpenseProvider>
+      <Wrapper>
+        <Header />
+        <ExpenseContainer />
+      </Wrapper>
+    </ExpenseProvider>
   );
 }
 

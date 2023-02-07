@@ -1,5 +1,7 @@
+import { FormEvent, useContext, useRef } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
+import { ExpenseContext } from "../context/Context";
 
 const Wrapper = styled.div`
   width: 60%;
@@ -11,12 +13,12 @@ const H3 = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
-const Form = styled.div`
+const InputContainer = styled.div`
   display: flex;
   gap: 2rem;
 `;
 
-const InputContainer = styled.div`
+const InputItem = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,21 +32,48 @@ const Input = styled.input`
   border-radius: 5px;
 `;
 
+type list = {
+  name: string;
+  cost: string;
+  id: number;
+};
+
 const ExpenseAdd = () => {
+  const { setList } = useContext(ExpenseContext);
+
+  const inputRefName = useRef();
+  const inputCostRef = useRef();
+
+  const addToList = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newItem: list = {
+      name: inputRefName.current.value,
+      cost: inputCostRef.current.value,
+      id: new Date().getTime(),
+    };
+
+    setList((prev) => [...prev, newItem]);
+    inputRefName.current.value = "";
+    inputCostRef.current.value = "";
+  };
+
   return (
     <Wrapper>
       <H3>Add Expense</H3>
-      <Form>
+      <form onSubmit={addToList}>
         <InputContainer>
-          <label htmlFor="name">Name</label>
-          <Input type="text" id="name" />
+          <InputItem>
+            <label htmlFor="name">Name</label>
+            <Input type="text" id="name" ref={inputRefName} />
+          </InputItem>
+          <InputItem>
+            <label htmlFor="cost">Cost</label>
+            <Input type="number" id="cost" ref={inputCostRef} />
+          </InputItem>
         </InputContainer>
-        <InputContainer>
-          <label htmlFor="cost">Cost</label>
-          <Input type="number" id="cost" />
-        </InputContainer>
-      </Form>
-      <Button>Save</Button>
+        <Button>Save</Button>
+      </form>
     </Wrapper>
   );
 };
