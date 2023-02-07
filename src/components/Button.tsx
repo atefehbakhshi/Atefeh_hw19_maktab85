@@ -8,6 +8,7 @@ const Btn = styled.button`
   border: none;
   border-radius: 5px;
   font-size: 0.75rem;
+  cursor: pointer;
 `;
 
 type Props = {

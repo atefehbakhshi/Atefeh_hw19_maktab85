@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-import Button from "../components/Button";
-import HeaderElement from "./HeaderElement";
+import Budget from "./Budget";
+import Remaining from "./Remaining";
+import Spent from "./Spent";
 
-const MainWrapper = styled.header`
+const Wrapper = styled.header`
   margin-bottom: 1rem;
 `;
 
@@ -19,21 +20,14 @@ const HeaderElementsWrapper = styled.div`
 
 const Header = () => {
   return (
-    <MainWrapper>
+    <Wrapper>
       <H1>My Budget Planner</H1>
       <HeaderElementsWrapper>
-        <HeaderElement bgColor={"#e2e3e5"}>
-          <p>Budget: &#163;{2000}</p>
-          <Button>Edit</Button>
-        </HeaderElement>
-        <HeaderElement bgColor={"#d4edda"}>
-          <p>Remaining: &#163;{2000}</p>
-        </HeaderElement>
-        <HeaderElement bgColor={"#cce5ff"}>
-          <p>Spent to far: &#163;{2000}</p>
-        </HeaderElement>
+        <Budget />
+        <Remaining />
+        <Spent />
       </HeaderElementsWrapper>
-    </MainWrapper>
+    </Wrapper>
   );
 };
 
