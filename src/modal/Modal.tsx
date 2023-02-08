@@ -1,24 +1,30 @@
 import { useContext } from "react";
 import ReactDOM from "react-dom";
 import { ExpenseContext } from "../context/Context";
-import ModalOverlay from "./ModalOverlay";
+import DeleteItemModal from "./DeleteItemModal";
+import EditBudgetModal from "./EditBudgetModal";
+import styled from "styled-components";
 
 const Modal = () => {
-  const { list, setList, showModal, setShowModal, setId, id } =
-    useContext(ExpenseContext);
+  const { deleteModal, showModal } = useContext(ExpenseContext);
+
+  const OuterWrapper = styled.div`
+    display: ${showModal};
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgb(139, 139, 139, 0.7);
+  `;
+
+  const Portal = (
+    <OuterWrapper>
+      {deleteModal ? <DeleteItemModal /> : <EditBudgetModal />}
+    </OuterWrapper>
+  );
+
   return (
     <div>
-      {ReactDOM.createPortal(
-        <ModalOverlay
-          showModal={showModal}
-          setShowModal={setShowModal}
-          list={list}
-          setList={setList}
-          id={id}
-          setId={setId}
-        />,
-        document.getElementById("modal-root")
-      )}
+      {ReactDOM.createPortal(Portal, document.getElementById("modal-root"))}
     </div>
   );
 };

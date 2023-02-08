@@ -1,6 +1,7 @@
-import styled from "styled-components";
-
+import { useContext } from "react";
 import Button from "../components/Button";
+import { ExpenseContext } from "../context/Context";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,21 +26,8 @@ const ButtonContainer = styled.div`
   gap: 2rem;
 `;
 
-const ModalOverlay = ({
-  showModal,
-  setShowModal,
-  setId,
-  id,
-  list,
-  setList,
-}) => {
-  const OuterWrapper = styled.div`
-    display: ${showModal};
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: rgb(139, 139, 139, 0.7);
-  `;
+const DeleteItemModal = () => {
+  const { list, setList, setShowModal, setId, id } = useContext(ExpenseContext);
 
   const removeItem = () => {
     const newList = list.filter((item) => item.id !== id);
@@ -49,20 +37,18 @@ const ModalOverlay = ({
 
   const cancelRemoveItem = () => {
     setShowModal("none");
-    setId("");
+    setId(0);
   };
 
   return (
-    <OuterWrapper>
-      <Wrapper>
-        <p>Are you sure for deleting an item?</p>
-        <ButtonContainer>
-          <Button onClick={removeItem}>Yes</Button>
-          <Button onClick={cancelRemoveItem}>No</Button>
-        </ButtonContainer>
-      </Wrapper>
-    </OuterWrapper>
+    <Wrapper>
+      <p>Are you sure for deleting an item?</p>
+      <ButtonContainer>
+        <Button onClick={removeItem}>Yes</Button>
+        <Button onClick={cancelRemoveItem}>No</Button>
+      </ButtonContainer>
+    </Wrapper>
   );
 };
 
-export default ModalOverlay;
+export default DeleteItemModal;

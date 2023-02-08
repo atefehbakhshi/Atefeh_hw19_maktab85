@@ -50,8 +50,8 @@ const ExpenseAdd = () => {
 
     setList((prev) => [...prev, newItem]);
 
-    // inputRefName.current.value = "";
-    // inputCostRef.current.value = "";
+    inputRefName.current.value = "";
+    inputCostRef.current.value = "";
   };
 
   return (

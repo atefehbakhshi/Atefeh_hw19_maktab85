@@ -45,9 +45,10 @@ const DeleteBtn = styled.button`
 `;
 
 const ExpenseList = () => {
-  const { list, setShowModal, setId } = useContext(ExpenseContext);
+  const { list, setShowModal, setId, dispatchFn } = useContext(ExpenseContext);
 
   const deleteItem = (id: number) => {
+    dispatchFn({ type: "deleteItem" });
     setShowModal("flex");
     setId(id);
   };

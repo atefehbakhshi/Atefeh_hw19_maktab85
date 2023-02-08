@@ -1,9 +1,10 @@
+import { FC } from "react";
 import HeaderElement from "./HeaderElement";
 
-const Spent = () => {
+const Spent: FC<{ spent: number }> = ({ spent }) => {
   return (
     <HeaderElement bgColor={"#cce5ff"}>
-      <p>Spent to far: &#163;{2000}</p>
+      <p>Spent to far: &#163;{spent}</p>
     </HeaderElement>
   );
 };
