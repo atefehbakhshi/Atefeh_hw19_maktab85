@@ -1,4 +1,6 @@
+import { useContext, useRef, useState } from "react";
 import styled from "styled-components";
+import { ExpenseContext } from "../context/Context";
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -17,10 +19,33 @@ const Input = styled.input`
 `;
 
 const ExpenseSearch = () => {
+  const { list, setSearchedList } = useContext(ExpenseContext);
+
+  const searchList = (event) => {
+    setSearchedList([]);
+
+    const searchValue = event.target.value.toLowerCase();
+
+    // check for Add Expense
+    if (searchValue.length > 0) {
+      list.map((item) => {
+        const lowerCaseItem = item.name.toLowerCase();
+
+        if (lowerCaseItem.includes(searchValue)) {
+          setSearchedList((prevList) => [...prevList, item]);
+        }
+      });
+    }
+  };
+
   return (
     <Wrapper>
       <H3>Expenses</H3>
-      <Input type="text" placeholder="Type to search..." />
+      <Input
+        type="text"
+        placeholder="Type to search..."
+        onChange={searchList}
+      />
     </Wrapper>
   );
 };

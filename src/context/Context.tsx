@@ -8,16 +8,17 @@ export const ExpenseContext = createContext<ExpenseCtx>({
   id: 0,
   budget: 0,
   deleteModal: true,
+  searchedList: [],
   setList: () => {},
   setShowModal: () => {},
   setId: () => {},
   setBudget: () => {},
   dispatchFn: () => {},
+  setSearchedList: () => {},
 });
 
 const reducerFn = (state: boolean, action: ModalAction) => {
-  const { type } = action;
-  switch (type) {
+  switch (action.type) {
     case "editBudget":
       return false;
     case "deleteItem":
@@ -32,8 +33,9 @@ const ExpenseProvider: FC<JsxElement> = ({ children }) => {
   const [showModal, setShowModal] = useState("none");
   const [id, setId] = useState(0);
   const [budget, setBudget] = useState(2000);
-
   const [deleteModal, dispatchFn] = useReducer(reducerFn, true);
+
+  const [searchedList, setSearchedList] = useState([]);
 
   return (
     <ExpenseContext.Provider
@@ -43,11 +45,13 @@ const ExpenseProvider: FC<JsxElement> = ({ children }) => {
         id,
         budget,
         deleteModal,
+        searchedList,
         setList,
         setShowModal,
         setId,
         setBudget,
         dispatchFn,
+        setSearchedList,
       }}
     >
       {children}

@@ -27,11 +27,25 @@ const ButtonContainer = styled.div`
 `;
 
 const DeleteItemModal = () => {
-  const { list, setList, setShowModal, setId, id } = useContext(ExpenseContext);
+  const {
+    list,
+    setList,
+    searchedList,
+    setSearchedList,
+    setShowModal,
+    setId,
+    id,
+  } = useContext(ExpenseContext);
 
   const removeItem = () => {
+    // set main list
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
+
+    // set searched list
+    const newSearchedList = searchedList.filter((item) => item.id !== id);
+    setSearchedList(newSearchedList);
+
     setShowModal("none");
   };
 

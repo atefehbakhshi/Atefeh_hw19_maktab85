@@ -26,9 +26,11 @@ export interface ExpenseCtx {
   id: number;
   budget: number;
   deleteModal: boolean;
+  searchedList: Array<list>;
   setList: (a: Array<list>) => void;
   setShowModal: (a: string) => void;
   setId: (a: number) => void;
   setBudget: (a: number) => void;
   dispatchFn: (a: ModalAction) => void;
+  setSearchedList: (a: []) => void;
 }
