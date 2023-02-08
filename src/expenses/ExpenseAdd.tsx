@@ -1,7 +1,8 @@
-import { FormEvent, useContext, useRef } from "react";
+import { FormEvent, RefObject, useContext, useRef } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import { ExpenseContext } from "../context/Context";
+import { Gettinglist } from "../types/type";
 
 const Wrapper = styled.div`
   width: 60%;
@@ -32,30 +33,25 @@ const Input = styled.input`
   border-radius: 5px;
 `;
 
-type list = {
-  name: string;
-  cost: string;
-  id: number;
-};
-
 const ExpenseAdd = () => {
   const { setList } = useContext(ExpenseContext);
 
-  const inputRefName = useRef();
-  const inputCostRef = useRef();
+  const inputRefName = useRef<HTMLInputElement>(null);
+  const inputCostRef = useRef<HTMLInputElement>(null);
 
   const addToList = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newItem: list = {
-      name: inputRefName.current.value,
-      cost: inputCostRef.current.value,
+    const newItem: Gettinglist = {
+      name: inputRefName.current?.value,
+      cost: Number(inputCostRef.current?.value),
       id: new Date().getTime(),
     };
 
     setList((prev) => [...prev, newItem]);
-    inputRefName.current.value = "";
-    inputCostRef.current.value = "";
+
+    // inputRefName.current.value = "";
+    // inputCostRef.current.value = "";
   };
 
   return (

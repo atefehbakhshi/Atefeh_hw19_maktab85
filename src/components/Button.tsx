@@ -15,8 +15,8 @@ type Props = {
   children: string;
 };
 
-const Button: FC<Props> = ({ children }) => {
-  return <Btn>{children}</Btn>;
+const Button: FC<Props> = ({ children, onClick }) => {
+  return <Btn onClick={onClick}>{children}</Btn>;
 };
 
 export default Button;

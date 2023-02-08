@@ -45,7 +45,12 @@ const DeleteBtn = styled.button`
 `;
 
 const ExpenseList = () => {
-  const { list } = useContext(ExpenseContext);
+  const { list, setShowModal, setId } = useContext(ExpenseContext);
+
+  const deleteItem = (id: number) => {
+    setShowModal("flex");
+    setId(id);
+  };
 
   return (
     <Wrapper>
@@ -55,7 +60,7 @@ const ExpenseList = () => {
             <p>{item.name}</p>
             <PriceDelete>
               <Price>&#163;{item.cost}</Price>
-              <DeleteBtn>x</DeleteBtn>
+              <DeleteBtn onClick={() => deleteItem(item.id)}>x</DeleteBtn>
             </PriceDelete>
           </ListItem>
         );
