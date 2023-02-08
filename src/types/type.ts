@@ -16,11 +16,19 @@ interface list {
   id: number;
 }
 
+export interface ModalAction {
+  type: string;
+}
+
 export interface ExpenseCtx {
   list: Array<list>;
   showModal: string;
   id: number;
+  budget: number;
+  deleteModal: boolean;
   setList: (a: Array<list>) => void;
   setShowModal: (a: string) => void;
   setId: (a: number) => void;
+  setBudget: (a: number) => void;
+  dispatchFn: (a: ModalAction) => void;
 }

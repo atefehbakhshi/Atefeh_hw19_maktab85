@@ -24,7 +24,10 @@ const Modal = () => {
 
   return (
     <div>
-      {ReactDOM.createPortal(Portal, document.getElementById("modal-root"))}
+      {ReactDOM.createPortal(
+        Portal,
+        document.getElementById("modal-root") as HTMLDivElement
+      )}
     </div>
   );
 };

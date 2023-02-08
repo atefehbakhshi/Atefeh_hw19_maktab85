@@ -1,6 +1,6 @@
 import { createContext, FC, useReducer, useState } from "react";
 import ExpenseList from "../data/data";
-import { ExpenseCtx, JsxElement } from "../types/type";
+import { ExpenseCtx, JsxElement, ModalAction } from "../types/type";
 
 export const ExpenseContext = createContext<ExpenseCtx>({
   list: [],
@@ -15,9 +15,16 @@ export const ExpenseContext = createContext<ExpenseCtx>({
   dispatchFn: () => {},
 });
 
-const reducerFn = (state, action) => {
-  if (action.type === "editBudget") return false;
-  if (action.type === "deleteItem") return true;
+const reducerFn = (state: boolean, action: ModalAction) => {
+  const { type } = action;
+  switch (type) {
+    case "editBudget":
+      return false;
+    case "deleteItem":
+      return true;
+    default:
+      return state;
+  }
 };
 
 const ExpenseProvider: FC<JsxElement> = ({ children }) => {
