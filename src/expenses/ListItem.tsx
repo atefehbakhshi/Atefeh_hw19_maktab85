@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { ExpenseContext } from "../context/Context";
-import styled from "styled-components";
+import { list } from "../types/type";
+import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ const DeleteBtn = styled.button`
   cursor: pointer;
 `;
 
-const ListItem = ({ item }) => {
+const ListItem:FC<{ item: list }> = ({ item }) => {
   const { setShowModal, setId, dispatchFn } = useContext(ExpenseContext);
 
   const deleteItem = (id: number) => {

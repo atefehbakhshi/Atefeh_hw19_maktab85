@@ -1,8 +1,8 @@
 import { FormEvent, RefObject, useContext, useRef } from "react";
-import styled from "styled-components";
 import Button from "../components/Button";
 import { ExpenseContext } from "../context/Context";
 import { Gettinglist } from "../types/type";
+import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   width: 60%;

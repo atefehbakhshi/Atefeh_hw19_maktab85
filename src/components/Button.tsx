@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Btn = styled.button`
   padding: 0.5rem 0.75rem;

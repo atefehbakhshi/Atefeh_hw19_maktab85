@@ -7,14 +7,3 @@
 body {
   font-family: sans-serif;
 }
-
-.test {
-  width: 50%;
-  height: 50vh;
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 5px;
-  top: 25vh;
-  left: 25%;
-  box-shadow: 5px 5px 5px 5px gray;
-}

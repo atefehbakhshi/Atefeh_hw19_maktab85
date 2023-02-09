@@ -1,6 +1,6 @@
 import { createContext, FC, useReducer, useState } from "react";
-import ExpenseList from "../data/data";
 import { ExpenseCtx, JsxElement, ModalAction } from "../types/type";
+import ExpenseList from "../data/data";
 
 export const ExpenseContext = createContext<ExpenseCtx>({
   list: [],

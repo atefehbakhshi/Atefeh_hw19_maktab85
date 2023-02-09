@@ -5,12 +5,11 @@ export interface Gettinglist {
   id: number;
 }
 
-// context
 export interface JsxElement {
   children: JSX.Element | JSX.Element[];
 }
 
-interface list {
+export interface list {
   name: string;
   cost: number;
   id: number;

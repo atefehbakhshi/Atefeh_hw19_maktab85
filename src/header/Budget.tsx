@@ -14,7 +14,7 @@ const Budget: FC<{ budget: number }> = ({ budget }) => {
   return (
     <HeaderElement bgColor={"#e2e3e5"}>
       <p>Budget: &#163;{budget}</p>
-      <Button onClick={() => editBudget()}>Edit</Button>
+      <Button onClick={editBudget}>Edit</Button>
     </HeaderElement>
   );
 };
