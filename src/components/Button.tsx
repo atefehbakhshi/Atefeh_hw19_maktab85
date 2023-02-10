@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Btn = styled.button`
   padding: 0.5rem 0.75rem;
@@ -13,6 +13,7 @@ const Btn = styled.button`
 
 type Props = {
   children: string;
+  onClick?: () => void;
 };
 
 const Button: FC<Props> = ({ children, onClick }) => {

@@ -2,7 +2,7 @@ import ExpenseProvider from "./context/Context";
 import ExpenseContainer from "./expenses/ExpenseContainer";
 import Header from "./header/Header";
 import Modal from "./modal/Modal";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   padding: 1rem 2rem;

@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import { ExpenseContext } from "../context/Context";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-bottom: 1rem;
@@ -21,7 +21,7 @@ const Input = styled.input`
 const ExpenseSearch = () => {
   const { list, setSearchedList } = useContext(ExpenseContext);
 
-  const searchList = (event) => {
+  const searchList = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearchedList([]);
 
     const searchValue = event.target.value.toLowerCase();
@@ -29,9 +29,9 @@ const ExpenseSearch = () => {
     // check for Add Expense
     if (searchValue.length > 0) {
       list.map((item) => {
-        const lowerCaseItem = item.name.toLowerCase();
+        const lowerCaseItem = item.name?.toLowerCase();
 
-        if (lowerCaseItem.includes(searchValue)) {
+        if (lowerCaseItem?.includes(searchValue)) {
           setSearchedList((prevList) => [...prevList, item]);
         }
       });

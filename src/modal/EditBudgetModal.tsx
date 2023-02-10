@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import Button from "../components/Button";
 import { ExpenseContext } from "../context/Context";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 3rem;
   width: 40%;
-  height: 25vh;
+  height: 40vh;
   position: absolute;
   background-color: rgb(255 255 255);
   border-radius: 5px;
@@ -34,10 +34,10 @@ const ButtonContainer = styled.div`
 
 const EditBudgetModal = () => {
   const { setShowModal, setBudget } = useContext(ExpenseContext);
-  const editBudget = useRef(null);
+  const editBudget = useRef<HTMLInputElement>(null);
 
   const editeBtn = () => {
-    const newBudget = editBudget.current.value;
+    const newBudget = Number(editBudget.current?.value);
     setBudget(newBudget);
     setShowModal("none");
   };

@@ -1,5 +1,5 @@
 import { createContext, FC, useReducer, useState } from "react";
-import { ExpenseCtx, JsxElement, ModalAction } from "../types/type";
+import { ExpenseCtx, JsxElement, list, ModalAction } from "../types/type";
 import ExpenseList from "../data/data";
 
 export const ExpenseContext = createContext<ExpenseCtx>({
@@ -29,13 +29,14 @@ const reducerFn = (state: boolean, action: ModalAction) => {
 };
 
 const ExpenseProvider: FC<JsxElement> = ({ children }) => {
-  const [list, setList] = useState(ExpenseList);
-  const [showModal, setShowModal] = useState("none");
-  const [id, setId] = useState(0);
-  const [budget, setBudget] = useState(2000);
+  const [list, setList] = useState<list[]>(ExpenseList);
+
+  const [showModal, setShowModal] = useState<string>("none");
+  const [id, setId] = useState<number>(0);
+  const [budget, setBudget] = useState<number>(2000);
   const [deleteModal, dispatchFn] = useReducer(reducerFn, true);
 
-  const [searchedList, setSearchedList] = useState([]);
+  const [searchedList, setSearchedList] = useState<list[]>([]);
 
   return (
     <ExpenseContext.Provider

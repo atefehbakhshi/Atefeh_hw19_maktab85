@@ -1,7 +1,6 @@
-// expenseAdd
-export interface Gettinglist {
-  name: string | undefined;
-  cost: number | undefined;
+export interface list {
+  name?: string;
+  cost?: number;
   id: number;
 }
 
@@ -9,27 +8,21 @@ export interface JsxElement {
   children: JSX.Element | JSX.Element[];
 }
 
-export interface list {
-  name: string;
-  cost: number;
-  id: number;
-}
-
 export interface ModalAction {
   type: string;
 }
 
 export interface ExpenseCtx {
-  list: Array<list>;
+  list: list[];
   showModal: string;
   id: number;
   budget: number;
   deleteModal: boolean;
-  searchedList: Array<list>;
-  setList: (a: Array<list>) => void;
-  setShowModal: (a: string) => void;
-  setId: (a: number) => void;
-  setBudget: (a: number) => void;
-  dispatchFn: (a: ModalAction) => void;
-  setSearchedList: (a: []) => void;
+  searchedList: list[];
+  setList: React.Dispatch<React.SetStateAction<list[]>>;
+  setShowModal: React.Dispatch<React.SetStateAction<string>>;
+  setId: React.Dispatch<React.SetStateAction<number>>;
+  setBudget: React.Dispatch<React.SetStateAction<number>>;
+  dispatchFn: React.Dispatch<ModalAction>;
+  setSearchedList: React.Dispatch<React.SetStateAction<list[]>>;
 }

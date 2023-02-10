@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { ExpenseContext } from "../context/Context";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 import Budget from "./Budget";
 import Remaining from "./Remaining";
 import Spent from "./Spent";
+import { list } from "../types/type";
 
 const Wrapper = styled.header`
   margin-bottom: 1rem;
@@ -23,8 +24,16 @@ const HeaderElementsWrapper = styled.div`
 const Header = () => {
   const { list, budget } = useContext(ExpenseContext);
 
+  const calculate = (acc: number, cur: list): number => {
+    if (cur.cost) {
+      return cur.cost + acc;
+    } else {
+      return 0;
+    }
+  };
+
   const spent = list.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.cost,
+    (accumulator, currentValue) => calculate(accumulator, currentValue),
     0
   );
 

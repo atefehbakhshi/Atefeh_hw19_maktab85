@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { ExpenseContext } from "../context/Context";
 import { list } from "../types/type";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;

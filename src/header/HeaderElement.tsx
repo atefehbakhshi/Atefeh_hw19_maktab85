@@ -1,12 +1,16 @@
 import { FC } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 type Props = {
   children: JSX.Element | JSX.Element[];
   bgColor: string;
 };
 
-const Element = styled.div`
+interface styledBg {
+  bgColor: string;
+}
+
+const Element = styled.div<styledBg>`
   width: 30%;
   display: flex;
   justify-content: space-between;

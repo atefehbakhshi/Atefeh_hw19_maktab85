@@ -3,9 +3,13 @@ import ReactDOM from "react-dom";
 import { ExpenseContext } from "../context/Context";
 import DeleteItemModal from "./DeleteItemModal";
 import EditBudgetModal from "./EditBudgetModal";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
-const OuterWrapper = styled.div`
+interface styledDisplay {
+  showModal: string;
+}
+
+const OuterWrapper = styled.div<styledDisplay>`
   display: ${(props) => props.showModal};
   width: 100vw;
   height: 100vh;

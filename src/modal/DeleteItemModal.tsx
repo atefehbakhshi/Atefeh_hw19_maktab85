@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Button from "../components/Button";
 import { ExpenseContext } from "../context/Context";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ExpenseContext } from "../context/Context";
 import ListItem from "./ListItem";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   border: 0.5px solid lightgray;
